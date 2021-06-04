@@ -1,0 +1,64 @@
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#204f79;  
+    font-family: Helvetica, sans-serif;  
+}  
+.login{ 
+        text-align: center; 
+        width: 300px;  
+        overflow: hidden;  
+        margin: auto;   
+        border-radius: 15px ;  
+          
+}  
+h2{  
+    text-align: center;  
+    color: #000080;  
+    padding: 30px;
+    font-family: Helvetica, sans-serif; 
+}  
+label{ 
+    text-align:left;
+    /* margin-right: 185px; */
+    color: #000080;  
+    font-size: 17px; 
+    font-family: Helvetica, sans-serif; 
+}  
+.Uname{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+    /* margin-bottom: 10px; */
+}  
+.Pass{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+    /* margin-bottom: 10px; */
+}  
+.log{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: #000080;
+    font-family: Helvetica, sans-serif;  
+  
+  
+}  
+span{  
+    color: #000080;  
+    font-size: 17px;  
+    font-family: Helvetica, sans-serif;
+}  
+a{  
+    float: center;  
+     
+}

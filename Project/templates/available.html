@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>NearRent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="../static/available.css">
+    <style>
+        body {
+          background-image: url('../static/background.jpeg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+    </style>  
+
+	</head>
+	<body>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#" style="color: #000080;font-weight: bolder;font-family: 'Roboto Slab',serif; font-size:xx-large;">NearRent</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('core.index')}}" style="color: rgb(33,37,41);"><b>HOME</b></a>
+                  </li>
+                  {% if current_user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('core.uploadForm')}}" style="color: rgb(33,37,41);"><b>LEND</b></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('core.available')}}" style="color: rgb(33,37,41);"><b>RENT</b></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('core.dashboard')}}" style="color: rgb(33,37,41);"><b>DASHBOARD</b></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('users.logout')}}" style="color: rgb(33,37,41);"><b>LOGOUT</b></a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('users.login')}}" style="color: rgb(33,37,41);"><b>LOGIN</b></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('users.signup')}}" style="color: rgb(33,37,41);"><b>SIGN UP</b></a>
+                  </li>
+                  {% endif %}
+                  <!-- <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+        </nav>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-4">
+					<h2 class="heading-section"><b>ITEMS AVAILABLE FOR RENT</b></h2>
+				</div>
+			</div>
+      {% if length!=0 %}
+			<div class="row">
+				<div class="col-md-12">
+					<!-- <h3 class="h5 mb-4 text-center">Table Accordion</h3> -->
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-primary">
+						    <tr>
+						    	<th><p style="font-size:large;font-weight:800">Product Image</p></th>
+						    	<th><p style="font-size:large;font-weight:800">Product Name</p></th>
+                  <th><p style="font-size:large;font-weight:800">Product Category</p></th>
+						      <th><p style="font-size:large;font-weight:800">Price per day</p></th>
+                  <th>&nbsp;&nbsp;</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+                {% for product in products.items %}
+						    <tr class="alert" role="alert">
+						    	
+						    	<td>
+						    		<div class="img" style="background-image: url(data:image/png;base64,{{product.image1}});"></div>
+						    	</td>
+						      <td>
+						      	<p style="font-size:medium;font-weight:700">{{product.item_name}}</p>
+						      </td>
+						      <td><p style="font-size:medium;font-weight:700">{{product.category}}</p></td>
+						      
+				          <td><p style="font-size:medium;font-weight:700">₹{{product.price}}</p></td>
+                  <td>
+                    <form method="post" action="{{url_for('core.rentItem')}}">
+                      <input type="text" id="fname" name="pid" value={{product.id}} style="display:none">
+                      <button type="submit">RENT</button>
+                    </form>
+                  </td>
+						      
+						    </tr>
+                {% endfor %}
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+      {% else %}
+      <h3 style="text-align:center;">No items available for rent</h3>
+      {% endif %}
+		</div>
+	</section>
+
+    <script src="../static/jquery.min.js"></script>
+    <script src="../static/popper.js"></script>
+    <script src="../static/bootstrap.min.js"></script>
+    <script src="../static/main.js"></script>
+
+	</body>
+</html>

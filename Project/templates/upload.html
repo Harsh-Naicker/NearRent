@@ -1,0 +1,75 @@
+<!DOCTYPE html>    
+<html>    
+<head>    
+    <title>Uploading Item</title>    
+    <link rel="stylesheet" type="text/css" href="../static/upload.css">
+     <!-- CSS only -->
+     
+     <!-- <link rel="stylesheet" type="text/css" href="../static/main.css"> -->
+    <style>
+      body {
+        background-image: url('../static/background.jpeg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    </style>    
+</head>  
+  <body>
+
+   <h2 class="head">UPLOAD ITEM</h2><br>    
+    <div class="upload">    
+    <form id="upload" method="post" enctype="multipart/form-data" action="{{url_for('core.upload')}}">  
+       
+        <label class="title"><p><b>ITEM NAME
+        </b></p>    
+        </label>    
+        <input type="text" name="item" class="item" placeholder="Item" required>    
+        
+        <br><br>
+        <label class="title"><p><b>UPLOAD IMAGES     
+        </b></p>
+        </label>
+      <label class="image">
+        <input type="file" name="file1" required>
+       
+      </label>
+        <br><br>
+      <label class="image">
+        <input type="file" name="file2" required>
+        
+      </label>
+<br><br>
+      <label class="image">
+        <input type="file" name="file3" required>
+        
+      </label>
+      
+      <br><br>
+      <label class="title"><p><b>PRICE     
+        </b></p>    
+        </label>    
+        <input type="text" name="price" class="item" placeholder="Price" required>
+        
+      <label class="title"><p><b>CATEGORY</b></p></label>
+      
+         <select class="cat" name = "dropdown">
+            <option value = "Clothing" selected>Clothing</option>
+            <option value = "Furniture">Furniture</option>
+            <option value = "Accessories">Accessories</option>
+            <option value = "Stationery">Stationery</option>
+            <option value = "Electronics">Electronics</option>
+            <option value = "Home appliances">Home Appliances</option>
+         </select>
+      
+      
+      <br><br>
+      
+      <button type="submit">Upload</button>
+      
+      <br><br> 
+    </form>
+    <a href="{{url_for('core.index')}}">Back to home</a>
+</div>
+  </body>
+</html>

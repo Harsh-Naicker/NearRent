@@ -1,0 +1,81 @@
+{% extends "header.html" %}
+{% block content %}
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    
+      <!-- Carousel start -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner" style="justify-content: center;">
+        <div class="carousel-item active">
+          <img src="../static/slide1.jpg" class="center-block w-100 car-image" alt="..." style="height: 650px; margin: auto; text-align: center;display: block;">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5>Register on NearRent</h5>
+            <p>Sign up on NearRent to become a member.</p> -->
+            <h3>BUY AND RENT COMMODITIES</h3>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../static/slide2.jpg" class="d-block w-100" alt="..." style="height: 650px; margin: auto; text-align: center;display: block;">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5>Choose if you wanna lend or rent</h5>
+            <p>You can upload details of the commodity you want to lend or look for renting a commodity.</p> -->
+            <h3 style="color: black;">CONNECT WITH NEARBY VENDORS</h3>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../static/pay.jpg" class="d-block w-100" alt="..." style="height: 650px; margin: auto; text-align: center;display: block;">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5>Churn local business</h5>
+            <p>Pay for the commodities you rent or earn money by lending.</p> -->
+            <h3>CHURN LOCAL BUSINESS</h3>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      
+  </div>
+  <!-- Carousel end -->
+  
+  <!-- Intro start -->
+  <div style="margin-left: 10%;margin-right: 10%;">
+    {% if current_user.is_authenticated %}
+      <h2 style="padding-top: 30px;">Welcome, {{current_user.first_name}}</h2>
+    {% endif %}
+    <h2 style="padding-top: 30px;"><b>About NearRent</b></h2>
+    <p>NearRent is a peer-to-peer local 
+      commodity sharing marketplace. 
+      This platform allows the seller to 
+      upload various goods they 
+      wish to lend and the rentee to opt 
+      for the items they wish to rent. This web application connects people over a local network, so that a person who wishes to rent can have an open platform to do so. 
+    </p>
+    <div style="margin-bottom: 10px;">
+      <img src="../static/stonks.PNG" style="margin: auto; text-align: center;display: block;filter: drop-shadow(7px 7px 7px #666666);-webkit-filter: drop-shadow(7px 7px 7px #666666);">
+    </div>
+    <h2 style="padding-top: 30px;"><b>Lend / Rent</b></h2>
+    <p>Choose to either lend commodities to our community of users on a per-day cost basis or 
+      surf through the existing products available for rent and avail the benefits of our rich local rental business.
+    </p>
+    <div style="text-align: center;justify-content: space-between; margin-bottom: 20px;">
+      <a href="{{url_for('core.uploadForm')}}"><img src="../static/lend.PNG" style="box-shadow: 7px 7px 7px #666666; width: 40%;margin-right: 50px;"></a>
+      <a href="{{url_for('core.available')}}"><img src="../static/rent.PNG" style="box-shadow: 7px 7px 7px #666666; width: 40%;"></a>
+    </div>
+    
+  </div>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,52 @@
+{% extends "header.html" %}
+{% block content %}
+<div style="margin-left: 10%;margin-right: 10%;">
+    <h2><b>{{product.item_name}}</b></h2>
+    <div class="card-group">
+        <div class="card">
+          <img class="card-img-top" src="data:image/png;base64,{{product.image1}}" alt="Card image cap" style="height: 330px">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align:center">IMAGE 1</h5>
+            <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="data:image/png;base64,{{product.image2}}" alt="Card image cap" style="height: 330px">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align:center">IMAGE 2</h5>
+            <!-- <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="data:image/png;base64,{{product.image3}}" alt="Card image cap" style="height: 330px">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align:center">IMAGE 3</h5>
+            <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <h2><b>SUPPLIER INFORMATION</b></h2>
+      <p style="font-size:140%;"><span style="font-weight: bold;">Name:</span> {{supplier.first_name}} {{supplier.last_name}}</p>
+      <p style="font-size:140%;"><span style="font-weight: bold;">Email:</span> {{supplier.email}}</p>
+      <p style="font-size:140%;"><span style="font-weight: bold;">WhatsApp Number:</span> {{supplier.phone}}</p>
+      <p style="font-size:140%;"><span style="font-weight: bold;">Address:</span> {{supplier.address}}</p>
+
+      <form method="post" action="{{url_for('core.checkout')}}">
+        <input type="text" name="pid" value={{product.id}} style="display:none">
+        <input type="text" name="sid" value={{supplier.id}} style="display:none">
+        <label for="start">START DATE</label>
+        <input type="date" id="start" name="start" value="2021-05-27">
+        <label for="start">END DATE</label>
+        <input type="date" id="end" name="end" value="2021-05-27">
+        <button type="submit"]>MOVE TO CHECKOUT</button>
+      
+    </form>
+
+</div>
+   
+    
+{% endblock %}

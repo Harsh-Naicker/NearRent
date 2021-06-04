@@ -1,0 +1,46 @@
+<!DOCTYPE html>    
+<html>    
+<head>    
+    <title>Login Form</title>    
+    <link rel="stylesheet" type="text/css" href="../static/login.css">
+    <style>
+body {
+  background-image: url('../static/background.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>    
+</head>    
+<body>  
+    {% for mesg in get_flashed_messages() %}
+      <h2 style="color:  #14bf98; text-align: center;">{{ mesg }}</h2>
+    {% endfor %}
+
+    {% for field, errors in form.errors.items() %}
+        <h2>{{ form[field].label }}: {{ ', '.join(errors) }}</h2>
+    {% endfor %}
+
+    <h2>LOGIN</h2><br>    
+    <div class="login">    
+    <form id="login" method="post">   
+        {{form.hidden_tag()}} 
+        <label><p><b>EMAIL</b> </p>   
+        </label>    
+        <!-- <input type="text" name="Uname" id="Uname" placeholder="Username">     -->
+        {{form.email(class="Uname")}}
+        <br><br>    
+        <label><p><b>PASSWORD</b> </p>   
+        </label>    
+        <!-- <input type="Password" name="Pass" id="Pass" placeholder="Password">     -->
+        {{form.password(class="Uname")}}
+        <br><br>    
+        <!-- <input type="button" name="log" id="log" value="Log In Here">        -->
+        {{form.submit1(class="log")}}
+        <br><br> 
+        
+    </form>
+    <a href="{{url_for('core.index')}}">Back to home</a>     
+</div>    
+</body>    
+</html>     

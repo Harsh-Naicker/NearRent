@@ -1,0 +1,78 @@
+<!DOCTYPE html>    
+<html>    
+<head>    
+    <title>Signup Form</title>    
+    <link rel="stylesheet" type="text/css" href="../static/signup.css">
+    <style>
+body {
+  background-image: url('../static/background.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>    
+</head>    
+<body>
+    {% for mesg in get_flashed_messages() %}
+      <h2 style="color:  #14bf98; text-align: center;">{{ mesg }}</h2>
+    {% endfor %}
+
+    {% for field, errors in form.errors.items() %}
+        <h2>{{ form[field].label }}: {{ ', '.join(errors) }}</h2>
+    {% endfor %}
+    <h2>CREATE ACCOUNT</h2><br>    
+    <div class="signup">    
+    <form id="login" method="post">   
+        {{form.hidden_tag()}}
+        <label><p><b>FIRST NAME     
+        </b></p>    
+        </label>    
+        <!-- <input type="text" name="fname" id="fname" placeholder="First Name">     -->
+        {{form.fname(class="fname")}}
+        <br><br>
+        <label><p><b>LAST NAME     
+        </b></p>    
+        </label>    
+        <!-- <input type="text" name="lname" id="lname" placeholder="Last Name">     -->
+        {{form.lname(class="fname")}}
+        <br><br>
+        <label><p><b>PHONE NUMBER     
+        </b></p>    
+        </label>    
+        <!-- <input type="text" name="no" id="no" placeholder="Phone Number">     -->
+        {{form.phone(class="fname")}}
+        <br><br>  
+        <label><p><b>ADDRESS    
+        </b></p>    
+        </label>    
+        <!-- <input type="text" name="add" id="add" placeholder="Address">     -->
+        {{form.address(class="fname")}}
+        <br><br>       
+        <label><p><b>EMAIL ID     
+        </b></p>    
+        </label>    
+        <!-- <input type="text" name="email" id="email" placeholder="Email Id">     -->
+        {{form.email(class="fname")}}
+        <br><br>    
+        <label><p><b>PASSWORD    
+        </b></p>    
+        </label>    
+        <!-- <input type="Password" name="Pass" id="Pass" placeholder="Password">     -->
+        {{form.password(class="fname")}}
+        <br><br> 
+        <label><p><b>CONFIRM PASSWORD     
+        </b></p>    
+        </label>    
+        <!-- <input type="Password" name="Pwd" id="Pwd" placeholder="Confirm Password">     -->
+        {{form.confirm_password(class="fname")}}
+        <br><br>       
+        <!-- <input type="button" name="Sign Up" id="sign" value="Sign Up">        -->
+        {{form.submit2(class="sign")}}
+        <br><br>    
+        <!-- <input type="checkbox" id="check">     -->
+        
+    </form>
+    <a href="{{url_for('core.index')}}">Back to home</a>     
+</div>    
+</body>    
+</html>     

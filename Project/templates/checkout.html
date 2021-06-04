@@ -1,0 +1,69 @@
+{% extends "header.html" %}
+{% block content %}
+<br><br>
+<div style="margin-left: 10%;margin-right:10%">
+
+    <h2 style="text-align: center;"><b>BILL SUMMARY ({{start}} - {{end}})</b></h2>
+    <br><br>
+    <table style="margin-left:auto;margin-right: auto;padding: 10px;border: 1px solid black;border-collapse: collapse;">
+        <tr>
+            <th style="padding: 10px;border: 1px solid black;border-collapse: collapse;"><p style="font-size:120%;font-weight:bold">PRODUCT NAME &nbsp;&nbsp;&nbsp;</p></th>
+            <th style="padding: 10px;border: 1px solid black;border-collapse: collapse;"><p style="font-size:120%;font-weight:bold">CATEGORY &nbsp;&nbsp;&nbsp;</p></th>
+            <th style="padding: 10px;border: 1px solid black;border-collapse: collapse;"><p style="font-size:120%;font-weight:bold">PRICE/DAY &nbsp;&nbsp;&nbsp;</p></th>
+            <th style="padding: 10px;border: 1px solid black;border-collapse: collapse;"><p style="font-size:120%;font-weight:bold">DURATION (DAYS) &nbsp;&nbsp;&nbsp;</p></th>
+            <th style="padding: 10px;border: 1px solid black;border-collapse: collapse;"><p style="font-size:120%;font-weight:bold">BILL AMOUNT &nbsp;&nbsp;&nbsp;</p></th>
+        </tr>
+        <tr>
+            <td style="padding: 10px;border: 1px solid black;border-collapse: collapse;">{{product.item_name}}</td>
+            <td style="padding: 10px;border: 1px solid black;border-collapse: collapse;">{{product.category}}</td>
+            <td style="padding: 10px;border: 1px solid black;border-collapse: collapse;">{{product.price}}</td>
+            <td style="padding: 10px;border: 1px solid black;border-collapse: collapse;">{{days}}</td>
+            <td style="padding: 10px;border: 1px solid black;border-collapse: collapse;">₹{{price}}</td>
+        </tr>
+    </table>
+    <br><br>
+    <h2 style="text-align:center;"><b>SUPPLIER INFORMATION</b></h2>
+    <table style="margin-left:auto;margin-right: auto;padding: 10px;border: 1px solid black;border-collapse: collapse;">
+        <tr>
+            <th style="padding: 10px;border: 1px solid black;border-collapse: collapse;"><p style="font-size:120%;font-weight:bold">NAME &nbsp;&nbsp;&nbsp;</p></th>
+            <th style="padding: 10px;border: 1px solid black;border-collapse: collapse;"><p style="font-size:120%;font-weight:bold">EMAIL &nbsp;&nbsp;&nbsp;</p></th>
+            <th style="padding: 10px;border: 1px solid black;border-collapse: collapse;"><p style="font-size:120%;font-weight:bold">WHATSAPP NUMBER &nbsp;&nbsp;&nbsp;</p></th>
+            <th style="padding: 10px;border: 1px solid black;border-collapse: collapse;"><p style="font-size:120%;font-weight:bold">ADDRESS &nbsp;&nbsp;&nbsp;</p></th>
+        </tr>
+        <tr>
+            <td style="padding: 10px;border: 1px solid black;border-collapse: collapse;">{{supplier.first_name}} {{supplier.last_name}}</td>
+            <td style="padding: 10px;border: 1px solid black;border-collapse: collapse;">{{supplier.email}}</td>
+            <td style="padding: 10px;border: 1px solid black;border-collapse: collapse;">{{supplier.phone}}</td>
+            <td style="padding: 10px;border: 1px solid black;border-collapse: collapse;">{{supplier.address}}</td>
+        </tr>
+    </table>
+    <br><br><br>
+
+    <center>
+        <form action="{{url_for('core.charge')}}" method="POST" style="margin: 0 auto;">
+            <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="rzp_test_PFJOfZjOFHbKk5"
+            data-amount={{price*100}}
+            data-name="NearRent"
+            data-description="Purchase Description"
+            data-image="vk.jpg"
+            data-netbanking="true"
+            data-description="Tron Legacy"
+            data-prefill.name={{current_user.first_name}}
+            data-prefill.email={{current_user.email}}
+            data-prefill.contact={{current_user.phone}}
+            data-notes.shopping_order_id={{order_id}}>
+            </script>
+            <input type="hidden" name="shopping_order_id" value="21">
+        </form>
+
+    </center>
+    
+
+</div>
+
+
+
+
+{% endblock %}
